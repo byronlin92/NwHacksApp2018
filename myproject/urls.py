@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from app import views
+from django.contrib.auth import views as auth_views
+from accounts import views as account_views
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
@@ -28,5 +30,10 @@ urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
 
+    # SIGN UP SCREEN
+    url(r'^signup/$', account_views.signup, name='signup'),
+
+    #LOGIN SCREEN
+    url(r'^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login')
 
 ]
