@@ -12,7 +12,6 @@ function initMap() {
     map: map,
     title: 'Canada'
   });
-
   infoWindow = new google.maps.InfoWindow;
 
   // Try HTML5 geolocation.
@@ -22,6 +21,7 @@ function initMap() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
+
 	  var map = new google.maps.Map(document.getElementById('map'), {
 		    zoom: 13,
 		    center: pos
@@ -31,6 +31,7 @@ function initMap() {
 	    map: map,
 	    title: 'My current location'
 	  });
+      
       //Add listener
 google.maps.event.addListener(marker, "click", function (event) {
     var latitude = event.latLng.lat();
@@ -38,6 +39,7 @@ google.maps.event.addListener(marker, "click", function (event) {
     infoWindow.setContent('<div>Current Location: </div><div>' + latitude + ', ' + longitude + '</div>');
     infoWindow.open(map, marker);
 }); //end addListener
+      
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -47,7 +49,6 @@ google.maps.event.addListener(marker, "click", function (event) {
   }
 }
 
-
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(browserHasGeolocation ?
@@ -55,5 +56,3 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                         'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
 }
-
-
