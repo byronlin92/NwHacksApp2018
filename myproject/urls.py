@@ -22,7 +22,8 @@ urlpatterns = [
 
     #POSTS
     url(r'^posts/$', views.posts, name='posts'),
-    url(r'^posts/new$', views.posts_new, name='posts_new'),
+    url(r'^posts/new$', views.post_new, name='post_new'),
+    url(r'^posts/(?P<post_pk>\d+)/$', views.post_detail, name='post_detail'),
 
     url(r'^admin/', admin.site.urls),
 
