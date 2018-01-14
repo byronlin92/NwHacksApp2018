@@ -6,17 +6,7 @@ from .forms import NewPostForm
 def home(request):
     return render(request, 'home.html')
 
-# def signup(request):
-#     if request.method == 'POST':
-#         form = SignUpForm(request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             #login(request, user)
-#             return redirect('home')
-#     else:
-#         form = SignUpForm()
-#     return render(request, 'signup.html', {'form':form})
-
+#POSTS
 def posts(request):
     posts = Post.objects.all()
     return render(request, 'posts.html', {'posts':posts})
@@ -26,7 +16,7 @@ def post_new(request):
         form = NewPostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            # post.created_by = None
+            post.created_by = request.user
             post.created_at = timezone.now()
             post.updated_at = timezone.now()
             post.save()

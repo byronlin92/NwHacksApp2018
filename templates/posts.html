@@ -25,10 +25,10 @@
     <tbody class="list">
       {% for post in posts %}
         <tr>
-          <td class="price"><a href="{% url 'post_detail' post.pk %}">{{ post.price }}</td>
+          <td class="price">{{ post.price }}</td>
           <td class="name"><a href="{% url 'post_detail' post.pk %}">{{ post.name }}</td>
           <td class="location">{{ post.location }}</td>
-          <td class="starter">0</td>
+          <td class="starter"><a href="{% url 'profile_detail' user.profile.pk %}">{{user.username}}</td>
           <td class="created_at">{{ post.created_at }}</td>
         </tr>
       {% endfor %}

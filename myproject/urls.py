@@ -29,7 +29,7 @@ urlpatterns = [
     url(r'^posts/(?P<post_pk>\d+)/update$', views.post_update, name='post_update'),
 
 
-    # SIGN UP SCREEN
+    #ACCOUNTS
     url(r'^signup/$', account_views.signup, name='signup'),
     url(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),
     url(r'^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
@@ -38,6 +38,10 @@ urlpatterns = [
     url(r'^account/(?P<user_username>\w+)/update/$', account_views.account_update, name='account_update'),
     url(r'^account/(?P<user_username>\w+)/password/$', account_views.password_change, name='password_change'),
 
-
     url(r'^admin/', admin.site.urls),
+
+    #PROFILE
+    url(r'^profile/(?P<profile_pk>\d+)/details/$', account_views.profile_detail, name='profile_detail'),
+    url(r'^profile/(?P<profile_pk>\d+)/update/$', account_views.profile_update, name='profile_update'),
+
 ]

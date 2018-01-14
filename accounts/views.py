@@ -1,16 +1,17 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
 from django.contrib.auth import login
-from .forms import SignUpForm, AccountUpdateForm, UpdatePasswordForm
+from .forms import SignUpForm, AccountUpdateForm, UpdatePasswordForm, ProfileUpdateForm
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 
 from django.contrib.auth.models import User
+from .models import Profile
 #login decorator
 from django.contrib.auth.decorators import login_required
 
 
-
+#ACCOUNTS
 def signin(request):
     email = request.POST['emailAddress']
     password = request.POST['password']
@@ -50,6 +51,23 @@ def account_update(request, user_username):
         form = AccountUpdateForm()
     return render(request, 'account_update.html', {'user':user, 'form':form})
 
+
+#PROFILES
+def profile_detail(request, profile_pk):
+    profile = get_object_or_404(Profile, pk=profile_pk)
+    return render(request, 'profile_detail.html', {'profile':profile})
+
+@login_required
+def profile_update(request, profile_pk):
+    profile = get_object_or_404(Profile, pk=profile_pk)
+    if request.method == 'POST':
+        form = ProfileUpdateForm(request.POST, instance=profile)
+        if form.is_valid():
+            profile = form.save()
+            return redirect('profile_detail', profile_pk=profile_pk)
+    else:
+        form = ProfileUpdateForm()
+    return render(request, 'profile_update.html', {'profile':profile, 'form':form})
 
 @login_required
 def password_change(request, user_username):
