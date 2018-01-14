@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^posts/new$', views.post_new, name='post_new'),
     url(r'^posts/(?P<post_pk>\d+)/$', views.post_detail, name='post_detail'),
     url(r'^posts/(?P<post_pk>\d+)/update$', views.post_update, name='post_update'),
-
+    url(r'^posts/(?P<post_pk>\d+)/schedule', views.post_schedule, name='post_schedule'),
 
     #ACCOUNTS
     url(r'^signup/$', account_views.signup, name='signup'),

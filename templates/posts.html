@@ -15,20 +15,20 @@
   <table class="table">
     <thead class="thead-inverse">
       <tr>
-        <th><button class="sort" data-sort="price">Price</button></th>
+        <th><button class="sort" data-sort="rate">Hourly Rate</button></th>
         <th><button class="sort" data-sort="name">Name</button></th>
         <th><button class="sort" data-sort="location">Location</button></th>
-        <th><button class="sort" data-sort="starter">User</button></th>
+        <th><button class="sort" data-sort="starter">Cleaner</button></th>
         <th><button class="sort" data-sort="created_at">Created at</button></th>
       </tr>
     </thead>
     <tbody class="list">
       {% for post in posts %}
         <tr>
-          <td class="price">{{ post.price }}</td>
+          <td class="rate">{{ post.rate }}</td>
           <td class="name"><a href="{% url 'post_detail' post.pk %}">{{ post.name }}</td>
           <td class="location">{{ post.location }}</td>
-          <td class="starter"><a href="{% url 'profile_detail' user.profile.pk %}">{{user.username}}</td>
+          <td class="starter"><a href="{% url 'profile_detail' post.created_by.profile.pk %}">{{post.created_by.username}}</td>
           <td class="created_at">{{ post.created_at }}</td>
         </tr>
       {% endfor %}

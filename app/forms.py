@@ -17,4 +17,14 @@ class NewPostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ['price', 'name', 'location', 'message']
+        fields = ['rate', 'name', 'location', 'message']
+
+
+class PostScheduleForm(forms.ModelForm):
+    hour_count = forms.IntegerField()
+
+    class Meta:
+        model = Post
+        fields = ['location']
+
+
