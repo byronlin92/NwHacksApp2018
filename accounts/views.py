@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-
+from app.models import Post
 from django.contrib.auth import login
 from .forms import SignUpForm, AccountUpdateForm, UpdatePasswordForm, ProfileUpdateForm
 from django.shortcuts import render, redirect
@@ -55,7 +55,8 @@ def account_update(request, user_username):
 #PROFILES
 def profile_detail(request, profile_pk):
     profile = get_object_or_404(Profile, pk=profile_pk)
-    return render(request, 'profile_detail.html', {'profile':profile})
+    posts = Post.objects.all()
+    return render(request, 'profile_detail.html', {'profile':profile}, {'posts': posts})
 
 @login_required
 def profile_update(request, profile_pk):

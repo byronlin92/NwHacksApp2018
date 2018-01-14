@@ -17,10 +17,14 @@
 
 {% block content %}
 <div class="mb-4">
-  <a href="{% url 'posts' %}" class="btn btn-primary">Posts</a>
+  <a href="{% url 'posts' %}" class="btn btn-primary" style="width:15%;">Service Posts</a>
+    <a href="{% url 'howItWorks' %}" class="btn btn-primary" style="width:20%;">How it works</a>
+    <a href="{% url 'serviceConnections' %}" class="btn btn-primary" style="width:30%;">The Services We Connect You With</a>
+    <a href="{% url 'meetOurTeam' %}" class="btn btn-primary" style="width:20%;">Meet our Team</a>
+    <a href="{% url 'reviews' %}" class="btn btn-primary" style="width:10%;">Reviews</a>
 </div>
 
-  <h1>Cleaner's Available :</h1>
+  <h1>Cleaner's Available : {{ posts }}</h1>
   <div id="map"></div>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUeZAdGByjtBQJouUaAD5lX_VJ_xbt1c8&callback=initMap"></script>
   {% load staticfiles %}

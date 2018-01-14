@@ -7,12 +7,25 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 def home(request):
-    return render(request, 'home.html')
+    posts = Post.objects.all()
+    return render(request, 'home.html', {'posts':len(posts)})
 
 #POSTS
 def posts(request):
     posts = Post.objects.all()
     return render(request, 'posts.html', {'posts':posts})
+
+def howItWorks(request):
+    return render(request, 'howItWorks.html')
+
+def serviceConnections(request):
+    return render(request, 'serviceConnections.html')
+
+def meetOurTeam(request):
+    return render(request, 'meetOurTeam.html')
+
+def reviews(request):
+    return render(request, 'reviews.html')
 
 @login_required
 def post_new(request):

@@ -34,6 +34,12 @@ urlpatterns = [
     url(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),
     url(r'^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
 
+    #INFO TABS
+    url(r'^howItWorks/$', views.howItWorks, name='howItWorks'),
+    url(r'^serviceConnections/$', views.serviceConnections, name='serviceConnections'),
+    url(r'^meetOurTeam/$', views.meetOurTeam, name='meetOurTeam'),
+    url(r'^reviews/$', views.reviews, name='reviews'),
+
     url(r'^account/(?P<user_username>\w+)/details/$', account_views.account_detail, name='account_detail'),
     url(r'^account/(?P<user_username>\w+)/update/$', account_views.account_update, name='account_update'),
     url(r'^account/(?P<user_username>\w+)/password/$', account_views.password_change, name='password_change'),
@@ -42,6 +48,6 @@ urlpatterns = [
 
     #PROFILE
     url(r'^profile/(?P<profile_pk>\d+)/details/$', account_views.profile_detail, name='profile_detail'),
-    url(r'^profile/(?P<profile_pk>\d+)/update/$', account_views.profile_update, name='profile_update'),
+    url(r'^profile/(?P<profile_pk>\d+)/update/$', account_views.profile_update, name='profile_update')
 
 ]
