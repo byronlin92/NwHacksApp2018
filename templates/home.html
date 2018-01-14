@@ -1,3 +1,11 @@
 {% extends 'base.html' %}
 
-<p> HOME</p>
+
+{% block content %}
+<div class="mb-4">
+  <a href="{% url 'posts' %}" class="btn btn-primary">Posts</a>
+</div>
+
+{% endblock %}
+
+

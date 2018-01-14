@@ -18,7 +18,13 @@ from django.contrib import admin
 from app import views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name='home'),
+
+    #POSTS
+    url(r'^posts/$', views.posts, name='posts'),
+    url(r'^posts/new$', views.posts_new, name='posts_new'),
+
+    url(r'^admin/', admin.site.urls),
+
 
 ]
