@@ -31,6 +31,10 @@ function initMap() {
 	    map: map,
 	    title: 'My current location'
 	  });
+
+    fetchCleaner(map, 12, 49.25957405640097, -123.20411031503909);
+    fetchCleaner(map, 13, 49.2428784792789, -123.20084874887698);
+    
       
       //Add listener
 google.maps.event.addListener(marker, "click", function (event) {
@@ -55,4 +59,26 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                         'Error: The Geolocation service failed.' :
                         'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
+}
+
+function fetchCleaner(usedMap, id, ltt, lgt){
+  var poss = {
+        lat: ltt,
+        lng: lgt
+      };
+
+  var marker = new google.maps.Marker({
+    position: poss,
+    map: usedMap,
+    title: 'id:' + id,
+    icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+  });
+
+  //Add listener
+google.maps.event.addListener(marker, "click", function (event) {
+    var latitude = event.latLng.lat();
+    var longitude = event.latLng.lng();
+    infoWindow.setContent('<div>Current Location: </div><div>' + latitude + ', ' + longitude + '</div>');
+    infoWindow.open(usedMap, marker);
+}); //end addListener
 }
