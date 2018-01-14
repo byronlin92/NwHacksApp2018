@@ -35,7 +35,8 @@ urlpatterns = [
     url(r'^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
 
     url(r'^account/(?P<user_username>\w+)/details/$', account_views.account_detail, name='account_detail'),
-
+    url(r'^account/(?P<user_username>\w+)/update/$', account_views.account_update, name='account_update'),
+    url(r'^account/(?P<user_username>\w+)/password/$', account_views.password_change, name='password_change'),
 
     url(r'^admin/', admin.site.urls),
 
