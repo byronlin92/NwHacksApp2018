@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'home' %}">Services Apps</a></li>
+  <li class="breadcrumb-item active">Posts</li>
+{% endblock %}
+
+
+{% block content %}
+<div class="mb-4">
+  <a href="{% url 'post_new' %}" class="btn btn-primary">New post</a>
+</div>
+
+<div id="post_table">
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th><button class="sort" data-sort="name">Name</button></th>
+        <th><button class="sort" data-sort="description">Description</button>
+        <th><button class="sort" data-sort="location">Location</button></th>
+        <th><button class="sort" data-sort="starter">User</button></th>
+        <th><button class="sort" data-sort="created_at">Created at</button></th>
+      </tr>
+    </thead>
+    <tbody class="list">
+      {% for post in posts %}
+        <tr>
+          <td class="name"><a href="{% url 'post_detail' post.pk %}">{{ post.name }}</td>
+          <td class="description">{{ post.description }}</td>
+          <td class="location">{{ post.location }}</td>
+          <td class="starter">0</td>
+          <td class="created_at">{{ post.created_at }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

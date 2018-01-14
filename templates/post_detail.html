@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'home' %}">Services Apps</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'posts' %}">Posts</a></li>
+  <li class="breadcrumb-item active">Post Detail</li>
+
+{% endblock %}
+
+{% block content %}
+<p>NAME: {{post.name }}</p>
+<p>DESCRIPTION: {{post.description }}</p>
+<p>LOCATION: {{post.location }}</p>
+<p>CREATED AT: {{post.created_at }}</p>
+
+
+{% endblock %}

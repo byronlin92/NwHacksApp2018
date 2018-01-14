@@ -14,8 +14,12 @@
 	</style>
 {% endblock %}
 
-{% block content %}
-	<h1>Help Me Clean</h1>
-	<div id="map"></div>
 
+{% block content %}
+<div class="mb-4">
+  <a href="{% url 'posts' %}" class="btn btn-primary">Posts</a>
+</div>
+
+  <h1>Help Me Clean</h1>
+  <div id="map"></div>
 {% endblock %}
