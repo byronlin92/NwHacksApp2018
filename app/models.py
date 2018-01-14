@@ -13,3 +13,4 @@ class Post(models.Model):
     #for scheduling
     scheduled_by = models.ForeignKey(User, related_name='posts_scheduled_by', on_delete=models.CASCADE, null=True)
     total_cost = models.IntegerField(null=True)
+

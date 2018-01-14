@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^posts/(?P<post_pk>\d+)/$', views.post_detail, name='post_detail'),
     url(r'^posts/(?P<post_pk>\d+)/update$', views.post_update, name='post_update'),
     url(r'^posts/(?P<post_pk>\d+)/schedule', views.post_schedule, name='post_schedule'),
+    url(r'^account/(?P<user_username>\w+)/scheduledPosts', views.scheduled_posts, name='scheduled_posts'),
 
     #ACCOUNTS
     url(r'^signup/$', account_views.signup, name='signup'),

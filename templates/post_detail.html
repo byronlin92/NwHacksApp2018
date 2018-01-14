@@ -14,10 +14,12 @@
 </div>
 
 
+{% if user != request.user %}
 <div class="mb-4">
   <a href="{% url 'post_schedule' post.pk %}" class="btn btn-primary">Schedule cleaner</a>
 </div>
-
+{% else %}
+{% endif %}
 
 
 <div class="container-fluid">

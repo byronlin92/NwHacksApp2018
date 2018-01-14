@@ -2,15 +2,13 @@
 
 {% block breadcrumb %}
   <li class="breadcrumb-item"><a href="{% url 'home' %}">Services Apps</a></li>
-  <li class="breadcrumb-item active">Posts</li>
+  <li class="breadcrumb-item active">Scheduled Services</li>
 {% endblock %}
 
 
 {% block content %}
-<div class="mb-4">
-  <a href="{% url 'post_new' %}" class="btn btn-primary">New post</a>
-</div>
 
+{% if user == request.user %}
 <div id="post_table">
   <table class="table">
     <thead class="thead-inverse">
@@ -19,20 +17,30 @@
         <th><button class="sort" data-sort="name">Name</button></th>
         <th><button class="sort" data-sort="location">Location</button></th>
         <th><button class="sort" data-sort="starter">Cleaner</button></th>
-        <th><button class="sort" data-sort="created_at">Created at</button></th>
+        <th><button class="sort" data-sort="created_at">Total cost</button></th>
       </tr>
     </thead>
     <tbody class="list">
-      {% for post in posts %}
+      {% for post in user.get_scheduled_posts %}
         <tr>
-          <td class="price">{{ post.rate }}</td>
+          <td class="rate">{{ post.rate }}</td>
           <td class="name"><a href="{% url 'post_detail' post.pk %}">{{ post.name }}</a></td>
           <td class="location">{{ post.location }}</td>
           <td class="starter"><a href="{% url 'profile_detail' user.profile.pk %}">{{user.username}}</a></td>
-          <td class="created_at">{{ post.created_at }}</td>
+          <td class="total_cost">{{ post.total_cost }}</td>
         </tr>
       {% endfor %}
     </tbody>
   </table>
 </div>
+
+{% else %}
+You do not have access to this page
+{% endif %}
+
 {% endblock %}
+
+
+
+
+

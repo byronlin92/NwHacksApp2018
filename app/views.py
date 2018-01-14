@@ -3,7 +3,7 @@ from django.utils import timezone
 from .models import Post
 from .forms import NewPostForm, PostScheduleForm
 from django.contrib import messages
-
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 def home(request):
@@ -73,9 +73,16 @@ def post_schedule(request, post_pk):
             hour_count = form.cleaned_data['hour_count']
             post.total_cost = hour_count * int(post.rate)
             post.scheduled_by = request.user
+            post.updated_at = timezone.now()
             post.save()
             messages.info(request, 'You have successfully scheduled this service')
             return redirect('posts')
     else:
         form = PostScheduleForm()
     return render(request, 'post_schedule.html', {'post':post, 'form': form})
+
+
+@login_required
+def scheduled_posts(request, user_username):
+    user = get_object_or_404(User, username=user_username)
+    return render(request, 'scheduled_posts.html', {'user': user})
