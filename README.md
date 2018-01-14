@@ -1,6 +1,16 @@
 # NwHacksApp2018
 Cleaning services web app allows cleaners to post their services and customers to select and schedule those services.
 
+Functionalities implemented:
+1.User management
+2. Authentication
+3. CRUD post for services
+4. Scheduling
+
+TODO:
+1. Link post's location with Google Maps
+2. Services review 
+3. Expand on user profile (display pic)
 
 ![Homepage](static/img/homepage.png)
 
