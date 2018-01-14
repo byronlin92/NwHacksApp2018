@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Help Me Clean</h1>
-  <img src="../static/img/map.jpg" class="img-fluid" alt="Responsive image">
+  <h1>Login</h1>
+  <h3>Email Address</h3>
+  <form method="post" nonvalidate>
+      <input id="emailAddress" type="email">
+  </form>
+  <h3>Password </h3>
+    <form method="post" nonvalidate>
+          <input id="password" type="password">
+      </form>
+  <button type="submit">Log In</button>
 {% endblock %}
