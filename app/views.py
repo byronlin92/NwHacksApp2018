@@ -30,15 +30,20 @@ def post_detail(request, post_pk):
     return render(request, 'post_detail.html', {'post': post})
 
 def post_update(request, post_pk):
-    post = Post.objects.get(pk=post_pk)
-    if request.method == 'POST':
-        form = NewPostForm(request.POST)
+    post = get_object_or_404(Post, pk=post_pk)
+    if request.method == 'POST' and 'Edit_post' in request.POST:
+        form = NewPostForm(request.POST, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
-            # post.created_by = None
             post.updated_at = timezone.now()
             post.save()
-            return redirect('post_detail', {'post':post})
+            return redirect('post_detail', post_pk=post.pk)
+    elif request.method == 'POST' and 'Delete_post' in request.POST:
+        post.delete()
+        return redirect('posts')
     else:
         form = NewPostForm()
-    return render(request, 'post_update.html', {'post': post})
+    return render(request, 'post_update.html', {'post': post, 'form': form})
+
+
+

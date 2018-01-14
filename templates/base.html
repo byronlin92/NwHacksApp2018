@@ -6,8 +6,11 @@
     <meta charset="utf-8">
     <title>{% block title %}SERVICES APP{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+
     {% block stylesheet %}{% endblock stylesheet %}
+  
   </head>
+
 
   <body>
     {% block body %}
@@ -34,9 +37,12 @@
       </ol>
     <div>
       {% block content %}
-      {% endblock %}
+      {% endblock content %}
     </div>
 
+    <script async defer src="{% static 'js/googlemarkerapi.js' %}"></script>
+    <!-- <script src="{% static 'js/markerclusterer.js' %}"></script> -->
+    <script src="{% static 'js/custommap.js' %}"></script>
     {% endblock body %}
   </body>
 </html>
