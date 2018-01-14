@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'home' %}">Services Apps</a></li>
+  <li class="breadcrumb-item active">{{profile.user.username}}'s Profile</li>
+{% endblock %}
+
+{% block content %}
+
+<p>BIO: {{profile.bio}}</p>
+
+{% if user == request.user and request.user.is_authenticated %}
+<div class="mb-4">
+  <a href="{% url 'profile_update' user.profile.pk %}" class="btn btn-primary">Update profile</a>
+</div>
+{% else %}
+{% endif %}
+
+{% endblock content %}
