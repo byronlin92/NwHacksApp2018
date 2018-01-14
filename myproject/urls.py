@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^signup/$', account_views.signup, name='signup'),
 
     #LOGIN SCREEN
+    #url(r'^login/$', account_views.signin)
     url(r'^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login')
 
 ]
