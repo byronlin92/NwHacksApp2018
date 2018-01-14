@@ -29,7 +29,6 @@ function initMap() {
 	  var marker = new google.maps.Marker({
 	    position: pos,
 	    map: map,
-	    draggable: true,
 	    title: 'My current location'
 	  });
       
@@ -39,7 +38,6 @@ google.maps.event.addListener(marker, "click", function (event) {
     var longitude = event.latLng.lng();
     infoWindow.setContent('<div>Current Location: </div><div>' + latitude + ', ' + longitude + '</div>');
     infoWindow.open(map, marker);
-    addLocation(latitude + ',' + longitude);
 }); //end addListener
       
     }, function() {
@@ -58,8 +56,3 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                         'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
 }
-
-function addLocation(location){
-	$("#id_location").text(location);
-}
-

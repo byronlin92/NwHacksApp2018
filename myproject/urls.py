@@ -38,6 +38,6 @@ urlpatterns = [
     url(r'^account/(?P<user_username>\w+)/update/$', account_views.account_update, name='account_update'),
     url(r'^account/(?P<user_username>\w+)/password/$', account_views.password_change, name='password_change'),
 
-    url(r'^admin/', admin.site.urls),
 
+    url(r'^admin/', admin.site.urls),
 ]

@@ -2,12 +2,24 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from django.contrib.auth import login
 from .forms import SignUpForm, AccountUpdateForm, UpdatePasswordForm
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, authenticate
+
 from django.contrib.auth.models import User
 #login decorator
 from django.contrib.auth.decorators import login_required
 
 
 
+def signin(request):
+    email = request.POST['emailAddress']
+    password = request.POST['password']
+    user = authenticate(request, username = email, password = password)
+    if user is not None:
+        login(request, user)
+        render(request, 'posts.html')
+    else:
+        render(request, 'signup.html')
 
 def signup(request):
     if request.method == 'POST':
