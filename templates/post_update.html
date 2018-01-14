@@ -12,6 +12,14 @@
   <form method="post" novalidate>
     {% csrf_token %}
     {% include 'includes/form.html' %}
-    <button type="submit" class="btn btn-success">Post</button>
+    <button type="submit" class="btn btn-success" name="Edit_post">Update Post</button>
+    <button type="submit" class="btn btn-success" name="Delete_post">Delete Post</button>
+
   </form>
 {% endblock %}
+
+
+
+
+
+

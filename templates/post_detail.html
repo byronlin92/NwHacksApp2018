@@ -8,6 +8,12 @@
 {% endblock %}
 
 {% block content %}
+
+
+<div class="mb-4">
+  <a href="{% url 'post_update' post.pk %}" class="btn btn-primary">Update post</a>
+</div>
+
 <p>NAME: {{post.name }}</p>
 <p>DESCRIPTION: {{post.description }}</p>
 <p>LOCATION: {{post.location }}</p>
