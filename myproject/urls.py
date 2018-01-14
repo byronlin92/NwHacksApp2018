@@ -28,13 +28,13 @@ urlpatterns = [
     url(r'^posts/(?P<post_pk>\d+)/$', views.post_detail, name='post_detail'),
     url(r'^posts/(?P<post_pk>\d+)/update$', views.post_update, name='post_update'),
 
-    url(r'^admin/', admin.site.urls),
 
     # SIGN UP SCREEN
     url(r'^signup/$', account_views.signup, name='signup'),
+    url(r'^logout/$', auth_views.LogoutView.as_view(), name='logout'),
+    url(r'^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
 
-    #LOGIN SCREEN
-    #url(r'^login/$', account_views.signin)
-    url(r'^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login')
+    url(r'^account/(?P<user_username>\w+)/details/$', account_views.account_detail, name='account_detail'),
 
+    url(r'^admin/', admin.site.urls),
 ]
